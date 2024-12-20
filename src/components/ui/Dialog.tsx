@@ -81,14 +81,14 @@ Dialog.Content = ({ children, className }) => {
         <div
           onClick={onClose}
           className={cn(
-            'fixed inset-0 z-50  backdrop-blur-[2px] flex items-center justify-center animate-in zoom-in-90  fade-in ',
+            'fixed inset-0 z-50  backdrop-blur-[2px] bg-black/40 flex items-center justify-center ',
             {},
           )}
         >
           <div
             onClick={(e) => e.stopPropagation()}
             className={cn(
-              'bg-background size-fit flex flex-col p-10 border',
+              'bg-background size-fit flex flex-col p-10 border animate-in zoom-in-90  fade-in ',
               className,
             )}
           >

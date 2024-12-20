@@ -12,12 +12,16 @@ export const ConversationPageById = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  if (!id) return;
-
   const { isLoading, isError } = useGetConversationsByIdQuery(id);
   const conversation = useAppSelector(
     (state) => state.conversation.conversation,
   );
+
+  useEffect(() => {
+    if (!conversation) {
+      navigate('/');
+    }
+  }, [conversation, navigate]);
 
   if (isLoading) return <Spinner />;
   if (isError)

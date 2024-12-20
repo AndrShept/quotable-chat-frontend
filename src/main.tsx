@@ -8,7 +8,6 @@ import { Toaster } from 'sonner';
 import App from './App.tsx';
 import { Spinner } from './components/Spinner.tsx';
 import { ConversationPageById } from './components/pages/ConversationPageById.tsx';
-import { Login } from './components/pages/Login.tsx';
 import NotFoundPage from './components/pages/NotFoundPage.tsx';
 import { ThemeProvider } from './components/providers/ThemeProvider.tsx';
 import './index.css';
@@ -18,7 +17,7 @@ import { store } from './lib/redux/store.ts';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ThemeProvider  storageKey="vite-ui-theme">
         <GoogleOAuthProvider clientId={AUTH_CLIENT_ID}>
           <main className="flex h-screen">
             <Toaster />

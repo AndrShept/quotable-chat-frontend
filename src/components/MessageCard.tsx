@@ -33,7 +33,7 @@ export const MessageCard = ({ message }: MessageCardProps) => {
               {
                 'break-all': !message.content.includes(' '),
                 'bg-white/20': isSenderApi && theme === 'dark',
-                'bg-zinc-900': isSenderApi && theme === 'light',
+                'bg-zinc-800 text-secondary': isSenderApi ,
               },
             )}
           >

@@ -11,8 +11,7 @@ interface ConversationCardProps {
 }
 
 export const ConversationCard = ({ conversation }: ConversationCardProps) => {
-  // const lastMessage = useAppSelector((state) => state.conversation.conversations?.find(conversation => conversation.id === conversation.id));
-  // console.log(lastMessage)
+
   return (
     <NavLink
       to={`conversation/${conversation.id}`}
@@ -21,7 +20,7 @@ export const ConversationCard = ({ conversation }: ConversationCardProps) => {
         cn(
           'flex w-full text-muted-foreground p-4 border-b hover:bg-secondary/40 duration-100 group',
           {
-            ' bg-secondary/60 hover:bg-secondary/60': isActive,
+            ' bg-secondary/30 hover:bg-secondary/30': isActive,
           },
         )
       }
@@ -29,13 +28,13 @@ export const ConversationCard = ({ conversation }: ConversationCardProps) => {
       <section className="flex gap-2 ">
         <Avatar avatarUrl={conversation.avatarUrl} className="size-11" />
         <div className="flex flex-col flex-1  ">
-          <div className="flex gap-1 ">
+          <div className="flex gap-1 font-medium ">
             <p className="line-clamp-1 break-all ">{conversation.firstName}</p>
             <p className="line-clamp-1 break-all ">{conversation.lastName}</p>
           </div>
 
           {conversation.messages && (
-            <p className="text-muted-foreground/50 line-clamp-2 break-words text-sm">
+            <p className="text-muted-foreground/70 line-clamp-2 break-words text-sm">
               {conversation.messages &&
                 conversation.messages[conversation.messages.length - 1]
                   ?.content}
