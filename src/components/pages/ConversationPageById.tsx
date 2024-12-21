@@ -32,8 +32,8 @@ export const ConversationPageById = () => {
     );
 
   return (
-    <section className="flex flex-col flex-1">
-      <div className="flex gap-2 items-center text-lg w-full  px-10 py-7 bg-secondary/40 border border-b-0 ">
+    <section className="flex flex-1 flex-col">
+      <div className="flex w-full items-center gap-2 border border-b-0 bg-secondary/40 px-10 py-7 text-lg">
         <Avatar className="size-14" avatarUrl={conversation?.avatarUrl} />
         <p>{conversation?.firstName}</p>
         <p>{conversation?.lastName}</p>

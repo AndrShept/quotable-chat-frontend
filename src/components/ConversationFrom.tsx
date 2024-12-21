@@ -70,13 +70,13 @@ export const ConversationFrom = ({
   }, []);
   return (
     <>
-      <h1 className="text-xl mb-10 font-medium">
+      <h1 className="mb-10 text-xl font-medium">
         {initialData
           ? "Let's update a custom chat!"
           : "Let's create a custom chat!"}
       </h1>
       <div>
-        <p className="text-muted-foreground text-sm">First name</p>
+        <p className="text-sm text-muted-foreground">First name</p>
         <Input
           required
           value={conversationData.firstName}
@@ -88,11 +88,11 @@ export const ConversationFrom = ({
           }
         />
         {errorMessage && (
-          <span className="text-red-500 text-sm mt-1 ">{errorMessage}</span>
+          <span className="mt-1 text-sm text-red-500">{errorMessage}</span>
         )}
       </div>
       <div>
-        <p className="text-muted-foreground text-sm">Last name</p>
+        <p className="text-sm text-muted-foreground">Last name</p>
         <Input
           required
           value={conversationData.lastName}
@@ -104,7 +104,7 @@ export const ConversationFrom = ({
           }
         />
       </div>
-      <div className="ml-auto flex gap-2 mt-2">
+      <div className="ml-auto mt-2 flex gap-2">
         <Dialog.ConfirmButton
           isLoading={isLoading || isLoadingUpdate}
           onClick={onClick}

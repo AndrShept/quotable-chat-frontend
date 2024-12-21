@@ -34,7 +34,7 @@ export const MessageButtons = ({
   };
 
   return (
-    <div className="ml-auto group-hover:opacity-100 opacity-0 flex">
+    <div className="ml-auto flex opacity-0 group-hover:opacity-100">
       <Button
         onClick={() => setIsShow((prev) => !prev)}
         className="size-[24px] p-1"
@@ -56,11 +56,11 @@ export const MessageButtons = ({
             <Trash2 />
           </Button>
         </Dialog.Trigger>
-        <Dialog.Content className=" gap-2 rounded-lg">
+        <Dialog.Content className="gap-2 rounded-lg">
           <p className="text-red-500">
             Are you sure you want to delete this item?
           </p>
-          <div className="flex gap-2 ml-auto mt-6">
+          <div className="ml-auto mt-6 flex gap-2">
             <Dialog.ConfirmButton isLoading={isLoading} onClick={onDelete}>
               delete
             </Dialog.ConfirmButton>

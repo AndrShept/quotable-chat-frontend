@@ -24,6 +24,7 @@ export const MessageEditForm = ({
   const dispatch = useAppDispatch();
 
   const onConfirm = async () => {
+    if (!updatedContent) return;
     try {
       dispatch(updateStateMessage({ messageId, updatedContent }));
       await updateMessage({ content: updatedContent, messageId }).unwrap();
@@ -36,19 +37,19 @@ export const MessageEditForm = ({
   };
 
   return (
-    <section className="flex flex-col gap-1  ">
+    <section className="flex flex-col gap-1">
       <Input
-        className="min-w-72 "
+        className="min-w-72"
         value={updatedContent}
         onChange={(e) => {
           setUpdatedContent(e.target.value);
         }}
       />
-      <div className="ml-auto flex ">
+      <div className="ml-auto flex">
         <Button
           disabled={isLoading}
           onClick={onConfirm}
-          className="hover:text-green-600 size-7 p-1"
+          className="size-7 p-1 hover:bg-secondary/40 hover:text-green-600"
           size="icon"
           variant="ghost"
         >
@@ -56,7 +57,7 @@ export const MessageEditForm = ({
         </Button>
         <Button
           onClick={() => setIsShow(false)}
-          className="hover:text-red-600 size-7 p-1"
+          className="size-7 p-1 hover:bg-secondary/40 hover:text-red-600"
           size="icon"
           variant="ghost"
         >

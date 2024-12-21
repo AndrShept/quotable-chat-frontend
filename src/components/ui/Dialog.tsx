@@ -67,7 +67,7 @@ export const Dialog: FC<DialogProps> & ConfirmPopoverCompound = ({
 Dialog.Trigger = ({ children, ...props }) => {
   const { onOpen } = useDialog();
   return (
-    <button className="cursor-default w-full" onClick={onOpen} {...props}>
+    <button className="w-full cursor-default" onClick={onOpen} {...props}>
       {children}
     </button>
   );
@@ -81,14 +81,14 @@ Dialog.Content = ({ children, className }) => {
         <div
           onClick={onClose}
           className={cn(
-            'fixed inset-0 z-50  backdrop-blur-[2px] bg-black/40 flex items-center justify-center animate-in  fade-in  ',
+            'fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-[2px] animate-in fade-in',
             {},
           )}
         >
           <div
             onClick={(e) => e.stopPropagation()}
             className={cn(
-              'bg-background size-fit flex flex-col p-10 border animate-in zoom-in-90  fade-in ',
+              'flex size-fit flex-col border bg-background p-10 animate-in fade-in zoom-in-90',
               className,
             )}
           >

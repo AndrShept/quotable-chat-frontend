@@ -24,22 +24,8 @@ export const userSlice = createSlice({
     setCurrentUser: (state, action: PayloadAction<User>) => {
       state.current = action.payload;
       state.isAuthenticated = true;
-      localStorage.setItem(
-        'current',
-        JSON.stringify(action.payload),
-      );
+      localStorage.setItem('current', JSON.stringify(action.payload));
     },
-  },
-  extraReducers: (builder) => {
-    // builder
-    //   .addMatcher(userApi.endpoints.login.matchFulfilled, (state, action) => {
-    //     state.token = action.payload.token;
-    //     state.isAuthenticated = true;
-    //   })
-    //   .addMatcher(userApi.endpoints.current.matchFulfilled, (state, action) => {
-    //     state.isAuthenticated = true;
-    //     state.current = action.payload;
-    //   })
   },
 });
 

@@ -9,9 +9,11 @@ interface UserAvatarProps {
 
 export const Avatar = ({ className, avatarUrl }: UserAvatarProps) => {
   return (
-    <div className={cn('size-9 relative border rounded-full shrink-0', className)}>
+    <div
+      className={cn('relative size-9 shrink-0 rounded-full border', className)}
+    >
       <img
-        className="size-full object-cover rounded-full"
+        className="size-full rounded-full object-cover"
         src={avatarUrl || 'no-user-avatar.jpg'}
         alt="avatar-image"
       />

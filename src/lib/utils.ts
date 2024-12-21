@@ -8,9 +8,9 @@ export function cn(...inputs: ClassValue[]) {
 
 export const formatDate = (date: Date) => {
   const formattedDate = format(date, 'MMM dd, yyyy');
-  return formattedDate
+  return formattedDate;
 };
 export const formatDateMessage = (date: Date) => {
   const formattedDate = format(date, 'M/d/yyyy, h:mm a');
-  return formattedDate
+  return formattedDate;
 };

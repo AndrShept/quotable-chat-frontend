@@ -20,7 +20,7 @@ export const MessageList = ({ conversation }: MessageListProps) => {
     <>
       <ul
         ref={ref}
-        className="  gap-2 flex-col-reverse max-h-screen h-full border p-4 overflow-y-auto flex w-full "
+        className="flex h-full max-h-screen w-full flex-col-reverse gap-2 overflow-y-auto border p-4"
       >
         {conversation?.messages?.map((message) => (
           <MessageCard key={message.id} message={message} />

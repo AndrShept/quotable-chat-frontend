@@ -27,15 +27,18 @@ export const ConversationsList = () => {
 
   return (
     <>
-      <ul className="flex  flex-col h-[70vh]  overflow-y-auto  ">
+      <ul className="flex h-[70vh] flex-col overflow-y-auto">
         {searchValue && !conversations.length ? (
-          <div className="text-muted-foreground m-auto flex flex-col items-center gap-2">
+          <div className="m-auto flex flex-col items-center gap-2 text-muted-foreground">
             <SearchIcon className="size-7" />
-            <p className=" text-sm">Chat not found </p>
+            <p className="text-sm">Chat not found </p>
           </div>
         ) : (
           conversations?.map((conversation) => (
-            <ConversationCard conversation={conversation} />
+            <ConversationCard
+              key={conversation.id}
+              conversation={conversation}
+            />
           ))
         )}
       </ul>

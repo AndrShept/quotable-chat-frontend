@@ -9,8 +9,8 @@ interface CardButtonsProps {
 
 export const CardButtons = ({ id }: CardButtonsProps) => {
   return (
-    <div className="mt-auto ml-auto flex opacity-0 group-hover:opacity-100  ">
-      <EditButton id={id}  />
+    <div className="ml-auto mt-auto flex opacity-0 group-hover:opacity-100">
+      <EditButton id={id} />
       <DeleteButton id={id} />
     </div>
   );

@@ -22,7 +22,7 @@ export const Search = () => {
           setDebouncedValue(e.target.value);
         }}
         placeholder="Search or start new chat"
-        className="rounded-full border h-9 pl-10 "
+        className="h-9 rounded-full border pl-10"
       />
     </div>
   );

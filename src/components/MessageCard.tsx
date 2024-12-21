@@ -21,18 +21,18 @@ export const MessageCard = ({ message }: MessageCardProps) => {
   return (
     <li
       ref={ref}
-      className={cn('flex gap-2  flex-col w-fit group ', {
-        ' mr-auto': isSenderApi,
-        ' ml-auto': !isSenderApi,
+      className={cn('group flex w-fit flex-col gap-2', {
+        'mr-auto': isSenderApi,
+        'ml-auto': !isSenderApi,
       })}
     >
       <div className="flex gap-2">
         {isSenderApi && <Avatar avatarUrl={message.conversation?.avatarUrl} />}
-        <div className="flex flex-col gap-2 ">
+        <div className="flex flex-col gap-2">
           {!isShow && (
             <p
               className={cn(
-                'bg-secondary/50 px-4 py-2 rounded-full break-words  ',
+                'break-words rounded-full bg-secondary/50 px-4 py-2',
                 {
                   'break-all': !message.content.includes(' '),
                   'bg-white/20': isSenderApi && theme === 'dark',
@@ -52,15 +52,17 @@ export const MessageCard = ({ message }: MessageCardProps) => {
           )}
           {message.createdAt && !isShow && (
             <p
-              className={cn('text-xs  ', {
-                ' mr-auto ': isSenderApi,
-                ' ml-auto ': !isSenderApi,
+              className={cn('text-xs', {
+                'mr-auto': isSenderApi,
+                'ml-auto': !isSenderApi,
               })}
             >
               {isUpdated
                 ? formatDateMessage(message.updatedAt)
                 : formatDateMessage(message.createdAt)}
-              {isUpdated && !isSenderApi && <p className='text-muted-foreground'>updated</p>}
+              {isUpdated && !isSenderApi && (
+                <p className="text-muted-foreground">updated</p>
+              )}
             </p>
           )}
         </div>

@@ -1,11 +1,9 @@
 import { SendHorizontalIcon } from 'lucide-react';
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { toast } from 'sonner';
 
 import { useAppDispatch } from '../hooks/store-hooks';
-import {
-  addMessage,
-} from '../lib/redux/conversationSlice';
+import { addMessage } from '../lib/redux/conversationSlice';
 import { useCreateMessageMutation } from '../lib/services/messageApi';
 import { cn } from '../lib/utils';
 import { Input } from './ui/Input';
@@ -37,9 +35,8 @@ export const MessageInput = ({ id }: MessageInputProps) => {
     }
   };
 
-
   return (
-    <section className="bg-secondary/50 w-full border p-6 border-t-0">
+    <section className="w-full border border-t-0 bg-secondary/50 p-6">
       <div className="relative">
         <Input
           value={content}
@@ -50,7 +47,7 @@ export const MessageInput = ({ id }: MessageInputProps) => {
         <button disabled={isLoading} onClick={onClick}>
           <SendHorizontalIcon
             className={cn(
-              'absolute  right-2 top-1.5 fill-secondary/60 hover:fill-primary/70  ',
+              'absolute right-2 top-1.5 fill-secondary/60 hover:fill-primary/70',
               {
                 'opacity-30': isLoading,
               },

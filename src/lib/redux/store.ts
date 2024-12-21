@@ -1,4 +1,3 @@
-// import { listenerMiddleware } from '@/middleware/auth';
 import { configureStore } from '@reduxjs/toolkit';
 
 import { api } from '../services/api';
@@ -14,8 +13,6 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),
-  // .prepend(localStorageMiddleware),
-  // .prepend(listenerMiddleware.middleware),
 });
 
 const currentUser = localStorage.getItem('current');

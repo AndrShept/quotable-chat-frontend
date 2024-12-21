@@ -55,7 +55,7 @@ export const {
   useGetConversationsByIdQuery,
   useLazyGetConversationsByIdQuery,
   useDeleteConversationMutation,
-  useUpdateConversationMutation
+  useUpdateConversationMutation,
 } = conversationApi;
 
 export const { getConversations, getConversationsById } =

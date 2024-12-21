@@ -9,10 +9,7 @@ import { ConversationsList } from './components/ConversationsList';
 import { LogOutButton } from './components/LogOutButton';
 import { Search } from './components/Search';
 import { useAuth } from './hooks/useAuth';
-import {
-  addConversationMessage,
-  addMessage,
-} from './lib/redux/conversationSlice';
+import { addConversationMessage } from './lib/redux/conversationSlice';
 import { socket } from './lib/socket';
 import { Message } from './lib/types/main.types.';
 
@@ -38,27 +35,29 @@ function App() {
       socket.off('disconnect', onDisconnect);
       socket.off('go', socketListener);
     };
-  }, [socket]);
+  }, []);
 
   return (
-    <main className="flex  w-full  ">
-      <aside className="w-[500px] flex flex-col  ">
-        <section className="flex flex-col gap-3 bg-secondary/50  p-3 border">
+    <main className="flex w-full">
+      <aside className="flex w-[500px] flex-col">
+        <section className="flex flex-col gap-3 border bg-secondary/50 p-3">
           <div className="flex justify-between">
             <Avatar avatarUrl={current?.avatarUrl} />
             {!isAuthenticated && <AuthButton />}
             {isAuthenticated && <LogOutButton />}
+
+            
           </div>
           <Search />
         </section>
 
-        <section className="  flex flex-col flex-1 ">
+        <section className="flex flex-1 flex-col">
           <div className="p-4">
             <h3 className="text-sky-500">Chats</h3>
           </div>
 
           <ConversationsList />
-          <div className="p-4 mt-auto ">
+          <div className="mt-auto p-4">
             <AddConversationButton />
           </div>
         </section>
