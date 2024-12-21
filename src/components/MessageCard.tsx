@@ -1,9 +1,8 @@
-import { useCallback, useEffect, useRef } from 'react';
+import {  useRef } from 'react';
 
 import { Message, SenderType } from '../lib/types/main.types.';
 import { cn, formatDateMessage } from '../lib/utils';
 import { Avatar } from './Avatar';
-import { CardButtons } from './CardButtons';
 import { MessageButtons } from './MessageButtons';
 import { useTheme } from './providers/ThemeProvider';
 

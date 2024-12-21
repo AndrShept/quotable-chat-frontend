@@ -18,10 +18,10 @@ export const ConversationPageById = () => {
   );
 
   useEffect(() => {
-    if (!conversation) {
+    if (!conversation && !isLoading) {
       navigate('/');
     }
-  }, [conversation, navigate]);
+  }, [conversation, isLoading, navigate]);
 
   if (isLoading) return <Spinner />;
   if (isError)

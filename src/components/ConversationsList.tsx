@@ -1,3 +1,5 @@
+import { SearchIcon } from 'lucide-react';
+
 import { useAppSelector } from '../hooks/store-hooks';
 import { useGetConversationsQuery } from '../lib/services/conversationApi';
 import { ConversationCard } from './ConversationCard';
@@ -26,9 +28,16 @@ export const ConversationsList = () => {
   return (
     <>
       <ul className="flex  flex-col h-[70vh]  overflow-y-auto  ">
-        {conversations?.map((conversation) => (
-          <ConversationCard conversation={conversation} />
-        ))}
+        {searchValue && !conversations.length ? (
+          <div className="text-muted-foreground m-auto flex flex-col items-center gap-2">
+            <SearchIcon className="size-7" />
+            <p className=" text-sm">Chat not found </p>
+          </div>
+        ) : (
+          conversations?.map((conversation) => (
+            <ConversationCard conversation={conversation} />
+          ))
+        )}
       </ul>
     </>
   );

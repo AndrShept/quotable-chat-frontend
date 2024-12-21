@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router';
 
-import { useAppSelector } from '../hooks/store-hooks';
 import { Conversation } from '../lib/types/main.types.';
 import { cn, formatDate } from '../lib/utils';
 import { Avatar } from './Avatar';

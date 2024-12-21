@@ -6,7 +6,6 @@ import {
   useLazyGetConversationsQuery,
   useUpdateConversationMutation,
 } from '../lib/services/conversationApi';
-import { Button } from './ui/Button';
 import { Dialog } from './ui/Dialog';
 import { Input } from './ui/Input';
 
@@ -57,7 +56,7 @@ export const ConversationFrom = ({
         }).unwrap();
       }
       await refetchConversations().unwrap();
-      setIsOpen && setIsOpen(false);
+      setIsOpen(false);
       toast.success(res.message);
     } catch (error) {
       console.log(error);

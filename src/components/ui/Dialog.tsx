@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Loader2 } from 'lucide-react';
 import React, {
   Dispatch,
@@ -81,7 +82,7 @@ Dialog.Content = ({ children, className }) => {
         <div
           onClick={onClose}
           className={cn(
-            'fixed inset-0 z-50  backdrop-blur-[2px] bg-black/40 flex items-center justify-center ',
+            'fixed inset-0 z-50  backdrop-blur-[2px] bg-black/40 flex items-center justify-center animate-in  fade-in  ',
             {},
           )}
         >

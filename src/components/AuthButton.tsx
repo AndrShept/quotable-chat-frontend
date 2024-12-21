@@ -12,6 +12,7 @@ export const AuthButton = () => {
     <>
       <GoogleLogin
         onSuccess={(credentialResponse) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const res = jwtDecode(credentialResponse.credential ?? '') as any;
           dispatch(
             setCurrentUser({
@@ -20,7 +21,7 @@ export const AuthButton = () => {
               email: res.email,
             }),
           );
-          toast.success(`Hi ${res.name} you successe login!`);
+          toast.success(`Hi ${res.name} you success login!`);
         }}
         onError={() => {
           console.log('Login Failed');
