@@ -35,6 +35,22 @@ export const conversationSlice = createSlice({
         ];
       }
     },
+    updateStateMessage: (
+      state,
+      action: PayloadAction<{ messageId: string; updatedContent: string }>,
+    ) => {
+      if (state.conversation) {
+        state.conversation.messages = state.conversation.messages.map(
+          (message) => {
+            if (message.id === action.payload.messageId) {
+              console.log('d');
+              return { ...message, content: action.payload.updatedContent };
+            }
+            return message;
+          },
+        );
+      }
+    },
     addConversationMessage: (state, action: PayloadAction<Message>) => {
       if (state.conversations) {
         state.conversations = state.conversations.map((conversation) => {
@@ -89,7 +105,8 @@ export const {
   setSearchValue,
   addMessage,
   addConversationMessage,
-  deleteMessageOnState
+  deleteMessageOnState,
+  updateStateMessage,
 } = conversationSlice.actions;
 
 export default conversationSlice.reducer;

@@ -1,5 +1,5 @@
-import { Trash2 } from 'lucide-react';
-import React, { useState } from 'react';
+import { Edit3Icon, Trash2 } from 'lucide-react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { toast } from 'sonner';
 
 import { useAppDispatch } from '../hooks/store-hooks';
@@ -10,9 +10,13 @@ import { Dialog } from './ui/Dialog';
 
 interface MessageButtonsProps {
   messageId: string | undefined;
+  setIsShow: Dispatch<SetStateAction<boolean>>;
 }
 
-export const MessageButtons = ({ messageId }: MessageButtonsProps) => {
+export const MessageButtons = ({
+  messageId,
+  setIsShow,
+}: MessageButtonsProps) => {
   const [deleteMessage, { isLoading }] = useDeleteMessageMutation();
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
@@ -30,11 +34,20 @@ export const MessageButtons = ({ messageId }: MessageButtonsProps) => {
   };
 
   return (
-    <div className="ml-auto group-hover:opacity-100 opacity-0">
+    <div className="ml-auto group-hover:opacity-100 opacity-0 flex">
+      <Button
+        onClick={() => setIsShow((prev) => !prev)}
+        className="size-[24px] p-1"
+        size="icon"
+        variant="ghost"
+      >
+        <Edit3Icon />
+      </Button>
       <Dialog open={isOpen} openOnChange={setIsOpen}>
         <Dialog.Trigger>
           {' '}
           <Button
+            onClick={() => setIsShow(false)}
             disabled={isLoading}
             className="size-[24px] p-1"
             size="icon"

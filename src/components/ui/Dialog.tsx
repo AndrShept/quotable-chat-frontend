@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Loader2 } from 'lucide-react';
 import React, {
   Dispatch,
   FC,

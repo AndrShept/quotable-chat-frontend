@@ -1,9 +1,10 @@
-import {  useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { Message, SenderType } from '../lib/types/main.types.';
 import { cn, formatDateMessage } from '../lib/utils';
 import { Avatar } from './Avatar';
 import { MessageButtons } from './MessageButtons';
+import { MessageEditForm } from './MessageEditForm';
 import { useTheme } from './providers/ThemeProvider';
 
 interface MessageCardProps {
@@ -11,6 +12,7 @@ interface MessageCardProps {
 }
 
 export const MessageCard = ({ message }: MessageCardProps) => {
+  const [isShow, setIsShow] = useState(false);
   const isSenderApi = message.sender === SenderType.API;
   const { theme } = useTheme();
   const ref = useRef<null | HTMLLIElement>(null);
@@ -26,18 +28,27 @@ export const MessageCard = ({ message }: MessageCardProps) => {
       <div className="flex gap-2">
         {isSenderApi && <Avatar avatarUrl={message.conversation?.avatarUrl} />}
         <div className="flex flex-col gap-2 ">
-          <p
-            className={cn(
-              'bg-secondary/50 px-4 py-2 rounded-full break-words  ',
-              {
-                'break-all': !message.content.includes(' '),
-                'bg-white/20': isSenderApi && theme === 'dark',
-                'bg-zinc-800 text-secondary': isSenderApi ,
-              },
-            )}
-          >
-            {message.content}
-          </p>
+          {!isShow && (
+            <p
+              className={cn(
+                'bg-secondary/50 px-4 py-2 rounded-full break-words  ',
+                {
+                  'break-all': !message.content.includes(' '),
+                  'bg-white/20': isSenderApi && theme === 'dark',
+                  'bg-zinc-800 text-secondary': isSenderApi,
+                },
+              )}
+            >
+              {message.content}
+            </p>
+          )}
+          {isShow && (
+            <MessageEditForm
+              content={message.content}
+              messageId={message.id}
+              setIsShow={setIsShow}
+            />
+          )}
           {message.createdAt && (
             <p
               className={cn('text-xs  ', {
@@ -50,7 +61,9 @@ export const MessageCard = ({ message }: MessageCardProps) => {
           )}
         </div>
       </div>
-      {!isSenderApi && <MessageButtons messageId={message.id} />}
+      {!isSenderApi && (
+        <MessageButtons setIsShow={setIsShow} messageId={message.id} />
+      )}
     </li>
   );
 };

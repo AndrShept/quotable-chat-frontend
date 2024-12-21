@@ -13,6 +13,16 @@ export const messageApi = api.injectEndpoints({
         body: data,
       }),
     }),
+    updateMessage: builder.mutation<
+      ResponseServerData<Message>,
+      { messageId: string; content: string }
+    >({
+      query: (data) => ({
+        url: '/messages',
+        method: 'PUT',
+        body: data,
+      }),
+    }),
     deleteMessage: builder.mutation<string, string>({
       query: (id) => ({
         url: `/messages/${id}`,
@@ -22,7 +32,10 @@ export const messageApi = api.injectEndpoints({
   }),
 });
 
-export const { useCreateMessageMutation, useDeleteMessageMutation } =
-  messageApi;
+export const {
+  useCreateMessageMutation,
+  useDeleteMessageMutation,
+  useUpdateMessageMutation,
+} = messageApi;
 
 export const { createMessage } = messageApi.endpoints;

@@ -1,15 +1,12 @@
 import { SendHorizontalIcon } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { toast } from 'sonner';
 
 import { useAppDispatch } from '../hooks/store-hooks';
 import {
-  addConversationMessage,
   addMessage,
 } from '../lib/redux/conversationSlice';
 import { useCreateMessageMutation } from '../lib/services/messageApi';
-import { socket } from '../lib/socket';
-import { Message } from '../lib/types/main.types.';
 import { cn } from '../lib/utils';
 import { Input } from './ui/Input';
 
