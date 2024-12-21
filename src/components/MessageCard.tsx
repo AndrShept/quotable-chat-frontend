@@ -15,6 +15,7 @@ export const MessageCard = ({ message }: MessageCardProps) => {
   const [isShow, setIsShow] = useState(false);
   const isSenderApi = message.sender === SenderType.API;
   const { theme } = useTheme();
+  const isUpdated = message.createdAt !== message.updatedAt;
   const ref = useRef<null | HTMLLIElement>(null);
 
   return (
@@ -49,14 +50,17 @@ export const MessageCard = ({ message }: MessageCardProps) => {
               setIsShow={setIsShow}
             />
           )}
-          {message.createdAt && (
+          {message.createdAt && !isShow && (
             <p
               className={cn('text-xs  ', {
                 ' mr-auto ': isSenderApi,
                 ' ml-auto ': !isSenderApi,
               })}
             >
-              {formatDateMessage(message.createdAt)}
+              {isUpdated
+                ? formatDateMessage(message.updatedAt)
+                : formatDateMessage(message.createdAt)}
+              {isUpdated && !isSenderApi && <p className='text-muted-foreground'>updated</p>}
             </p>
           )}
         </div>

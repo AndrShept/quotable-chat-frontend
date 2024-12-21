@@ -76,7 +76,7 @@ export const ConversationFrom = ({
           : "Let's create a custom chat!"}
       </h1>
       <div>
-        <p>First name</p>
+        <p className="text-muted-foreground text-sm">First name</p>
         <Input
           required
           value={conversationData.firstName}
@@ -92,7 +92,7 @@ export const ConversationFrom = ({
         )}
       </div>
       <div>
-        <p>Last name</p>
+        <p className="text-muted-foreground text-sm">Last name</p>
         <Input
           required
           value={conversationData.lastName}

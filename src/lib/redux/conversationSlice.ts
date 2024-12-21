@@ -44,7 +44,9 @@ export const conversationSlice = createSlice({
           (message) => {
             if (message.id === action.payload.messageId) {
               console.log('d');
-              return { ...message, content: action.payload.updatedContent };
+              return { ...message, content: action.payload.updatedContent,
+                updatedAt: new Date()
+               };
             }
             return message;
           },
