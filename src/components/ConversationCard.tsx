@@ -1,15 +1,25 @@
-import { NavLink } from 'react-router';
+import { useMemo } from 'react';
+import { NavLink, useParams } from 'react-router';
 
-import { Conversation } from '../lib/types/main.types.';
+import { Conversation, SenderType } from '../lib/types/main.types.';
 import { cn, formatDate } from '../lib/utils';
 import { Avatar } from './Avatar';
 import { CardButtons } from './CardButtons';
+import { NewMessageBade } from './NewMessageBade';
 
 interface ConversationCardProps {
   conversation: Conversation;
 }
 
 export const ConversationCard = ({ conversation }: ConversationCardProps) => {
+  const params = useParams();
+  const IsReadMessage = useMemo(() => {
+    return conversation.messages
+      .filter((message) => {
+        return message.sender === SenderType.API;
+      })
+      .every((item) => item.isRead);
+  }, [conversation.messages]);
   return (
     <NavLink
       to={`conversation/${conversation.id}`}
@@ -46,6 +56,10 @@ export const ConversationCard = ({ conversation }: ConversationCardProps) => {
             {formatDate(conversation.createdAt)}
           </time>
         )}
+        {conversation.id !== params.id && (
+          <NewMessageBade isRead={IsReadMessage} />
+        )}
+
         <CardButtons id={conversation.id} />
       </div>
     </NavLink>

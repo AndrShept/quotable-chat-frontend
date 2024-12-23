@@ -35,19 +35,34 @@ export const conversationSlice = createSlice({
         ];
       }
     },
-    updateStateMessage: (
+    updateConversationState: (
       state,
-      action: PayloadAction<{ messageId: string; updatedContent: string }>,
+      action: PayloadAction<{ conversationId: string; messageId: string }>,
     ) => {
+      state.conversations = state.conversations.map((conversation) => {
+        if (conversation.id === action.payload.conversationId) {
+          return {
+            ...conversation,
+            messages: conversation.messages.map((message) => {
+              if (message.id === action.payload.messageId) {
+                return { ...message, isRead: true };
+              }
+              return message;
+            }),
+          };
+        }
+        return conversation;
+      });
+    },
+
+    updateStateMessage: (state, action: PayloadAction<Message>) => {
       if (state.conversation) {
         state.conversation.messages = state.conversation.messages.map(
           (message) => {
-            if (message.id === action.payload.messageId) {
-              console.log('d');
+            if (message.id === action.payload.id) {
               return {
                 ...message,
-                content: action.payload.updatedContent,
-                updatedAt: new Date(),
+                ...action.payload,
               };
             }
             return message;
@@ -111,6 +126,7 @@ export const {
   addConversationMessage,
   deleteMessageOnState,
   updateStateMessage,
+  updateConversationState,
 } = conversationSlice.actions;
 
 export default conversationSlice.reducer;

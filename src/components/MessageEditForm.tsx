@@ -26,8 +26,8 @@ export const MessageEditForm = ({
   const onConfirm = async () => {
     if (!updatedContent) return;
     try {
-      dispatch(updateStateMessage({ messageId, updatedContent }));
-      await updateMessage({ content: updatedContent, messageId }).unwrap();
+      dispatch(updateStateMessage({id: messageId, content:updatedContent, updatedAt: new Date() }));
+      await updateMessage({ content: updatedContent, id:messageId }).unwrap();
 
       setIsShow(false);
     } catch (error) {

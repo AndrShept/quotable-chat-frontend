@@ -15,7 +15,7 @@ export const messageApi = api.injectEndpoints({
     }),
     updateMessage: builder.mutation<
       ResponseServerData<Message>,
-      { messageId: string; content: string }
+      Message
     >({
       query: (data) => ({
         url: '/messages',

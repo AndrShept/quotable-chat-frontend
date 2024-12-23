@@ -17,13 +17,14 @@ export interface Conversation {
 }
 
 export interface Message {
-  id?: string;
-  content: string;
+  id: string;
+  content?: string;
+  isRead?: boolean
 
-  sender: SenderType;
+  sender?: SenderType;
 
   conversation?: Conversation;
-  conversationId: string;
+  conversationId?: string;
 
   createdAt?: Date;
   updatedAt?: Date;
