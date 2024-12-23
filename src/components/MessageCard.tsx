@@ -33,6 +33,7 @@ export const MessageCard = ({ message }: MessageCardProps) => {
 
   useLayoutEffect(() => {
     if (inView && message.sender === SenderType.API && !message.isRead) {
+      console.log('saasads');
       try {
         updateMessage({ id: message.id, isRead: true });
 
@@ -87,22 +88,19 @@ export const MessageCard = ({ message }: MessageCardProps) => {
             />
           )}
           {message.createdAt && !isShow && (
-            <div>
-              <p
-                className={cn('text-xs', {
-                  'mr-auto': isSenderApi,
-                  'ml-auto': !isSenderApi,
-                })}
-              >
-                {isUpdated
-                  ? formatDateMessage(message.updatedAt)
-                  : formatDateMessage(message.createdAt)}
-                {isUpdated && !isSenderApi && (
-                  <p className="text-muted-foreground">updated</p>
-                )}
-              </p>
-              <p>{JSON.stringify(message.isRead)}</p>
-            </div>
+            <p
+              className={cn('text-xs', {
+                'mr-auto': isSenderApi,
+                'ml-auto': !isSenderApi,
+              })}
+            >
+              {isUpdated
+                ? formatDateMessage(message.updatedAt)
+                : formatDateMessage(message.createdAt)}
+              {isUpdated && !isSenderApi && (
+                <p className="text-muted-foreground">updated</p>
+              )}
+            </p>
           )}
         </div>
       </div>
